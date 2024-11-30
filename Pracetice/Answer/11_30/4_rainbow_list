@@ -1,0 +1,28 @@
+"""
+rainbow = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'purple']
+print(rainbow[2])
+
+rainbow_sort = rainbow[0:] #rainbow로 카피하면 rainbow자체를 카피하는 걸로 추정
+rainbow_sort.sort()
+print(rainbow_sort)
+
+rainbow_favorite = rainbow[0:]
+rainbow_favorite.append("green")
+print(rainbow_favorite)
+
+rainbow_delete = rainbow
+del rainbow_delete[3:6]
+print(rainbow_delete)
+"""
+
+rainbow = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'purple']
+print(rainbow[2])
+
+rainbow.sort()
+print(rainbow)
+
+rainbow.append("green")
+print(rainbow)
+
+del rainbow[3:7]
+print(rainbow)

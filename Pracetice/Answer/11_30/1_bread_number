@@ -1,0 +1,6 @@
+bread = 30
+people = 4
+bread_each = bread // people #정수로 남길려면 / 대신 // 사용
+bread_left = bread % people
+print(f"빵의 개수 : {bread_each}")
+print(f"남은 빵의 개수 : {bread_left}")

@@ -125,5 +125,47 @@ print(b) #정렬된 a b c d 로 나옴= ["1", "10", "2"]
 c.sort()
 print(c) #1, 10, 2의 결과. 숫자가 아니라 string이기 때문에 사전 순서로 1부터 정렬되고 2가 나오는 모습
 
+print("오늘은 12월 %d일 입니다." % 2)
+print("오늘은 %d월 %d일 입니다." % (12,2))
+print("오늘은 %d%s %d일 입니다." % (12,'월',2))
+print(f"오늘은 {12}{'월 '}{2}일 입니다.") #가장 깔끔한 느낌
+print("오늘은 "+str(12)+"월 "+str(2)+"일 입니다.")
+print("오늘은 ",12,"월 ",2,"일 입니다.",sep="")
+
+print("Hello".upper())
+print("Hello".lower())
+
+friends = "고찬국 김다운 김민창"
+a = friends.split("김") #기본 값이 띄어쓰기
+print(a)
+
+sentence = "{}월 {}일".format(12,2) #{} 안에 0,1 없어도 가능. 없으면 순서대로
+print(sentence) #print(f)를 더 잘 쓰기는 한데 알아서 나쁠건 없다
+
+
+b = "   111 222   "
+print(b.lstrip()) #111 222   
+print(b.strip()) #111 222
+print(b.split())
+
+
+print(1==2)
+
+x = 2
+print(1<x<3,"\n")
+print(True and False)
+print(True or False)
+print(not True)
+
+
+cart = ["계란", "마늘", "콩나물", "커피"]
+print("두부" in cart)
+print("계란" in cart)
+
 """
 
+if 1<3:
+    print("True")
+    print("True") # 들여쓰기 한 부분까지 if문 조건 달성시 실행
+    
+print("False")

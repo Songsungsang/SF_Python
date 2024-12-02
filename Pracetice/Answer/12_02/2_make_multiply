@@ -1,0 +1,20 @@
+num1 = int(input("첫번째 값을 입력 : "))
+num2 = (input("두번쨰 값을 입력 : "))
+
+num_sep = [int(num2[0]), int(num2[1]), int(num2[2])]
+
+line_three = num1 * num_sep[2]
+line_four = num1 * num_sep[1]
+line_five = num1 * num_sep[0]
+line_six = num1 * int(num2)
+
+print(f"{line_three}\n{line_four}\n{line_five}\n{line_six}")
+
+"""
+in1 = int(input())
+in2 = input()
+print(in1 * int(in2[2]))
+print(in1 * int(in2[1]))
+print(in1 * int(in2[0]))
+print(in1 * int(in2))
+"""

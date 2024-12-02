@@ -1,0 +1,30 @@
+
+score = int(input("점수를 입력해 주세요 : "))
+
+if score >= 90 and score <= 100 :
+    print("A")
+elif score >= 80 :
+    print("B")
+elif score >= 70 :
+    print("C")
+elif score >= 60 :
+    print("D")
+else :
+    print("E")
+
+"""
+score = int(input("점수를 입력해 주세요 : "))
+if score < 60 : #가장 효율적인 방법 >= 는 > 와 = 의 두번 과정을 거치는데 < 는 한번만 하면 된다
+    print("E")
+elif score < 70 :
+    print("D")
+elif score < 80 :
+    print("C")
+elif score < 90 :
+    print("B")
+else :
+    print("A")
+
+if score > 100 : # 예외 처리
+    print("만점은 100점입니다. 점수를 다시 입력해주세요 ")
+"""

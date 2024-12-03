@@ -1,0 +1,17 @@
+numbers = input("숫자 여러 개 입력 : ")
+list = numbers.split()
+number_list = [int(i) for i in list] # for each number in list, put them in number_list
+
+biggest = max(number_list) # max of list, not list.max()
+smallest = min(number_list)
+print(f"가장 큰 값: {biggest}\n가장 작은 값: {smallest}")
+
+number_list.remove(biggest)
+number_list.remove(smallest)
+
+total = 0
+for i in number_list:
+    total += i
+count = len(number_list) # not list.count()
+average = total / count
+print(f"나머지 값의 평균 : {average}")

@@ -162,10 +162,67 @@ cart = ["계란", "마늘", "콩나물", "커피"]
 print("두부" in cart)
 print("계란" in cart)
 
-"""
+
 
 if 1<3:
     print("True")
     print("True") # 들여쓰기 한 부분까지 if문 조건 달성시 실행
     
 print("False")
+
+
+
+i = int(input("어디까지 계산할까요? "))
+total_1 = 0
+total_2 = 0
+for num in range(1, i+1):
+    total_1 += num
+    if num % 2 != 0 :
+        total_2 += num
+print(total_1)
+print(total_2)
+
+
+
+a = [10, 20, 30]
+print(sum(a))
+
+a = [1,2,3,4,5]
+a3 = [i * 3 for i in a]
+print(a3) # 3,6,9,12,15
+
+a4 = [i * 3 for i in a if i % 2 == 0] # i에 if로 조건을 넣는것도 가능
+print(a4) # 2*3, 4*3
+
+
+for y in range(3): # 이중 for 문
+    for x in range(2): # 안쪽 x for문에서 돌림
+        print(f"y:{y}, x:{x}")
+    print("") # y 쪽에서 돌리기
+
+
+for i in range(2, 10):
+    print(f"[{i}] 단")
+    for j in range(1,10):
+        print(f"{i} * {j} = {i * j}")
+    print("")
+
+
+
+customer = int(input("고객수 입력: "))
+row = int(input("좌석행 수 입력 : "))
+
+if customer % row == 0 :
+    column = customer // row
+else :
+    column = (customer // row) + 1
+
+for i in range(0, row) :
+    for j in range(1, column + 1) :
+        seat = i * column + j
+        if seat > customer :
+            break
+        print(seat, end = " ")
+    print("")
+
+"""

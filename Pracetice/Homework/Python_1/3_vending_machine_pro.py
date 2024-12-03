@@ -13,7 +13,7 @@ else:
         drink = input("마시고 싶은 음료? ")
         if drink in vending_machine : # 음료가 있다면
             print(f"{drink} 드릴게요")
-            vending_machine.pop(vending_machine.index(drink))
+            vending_machine.remove(drink) # pop 보다 remove를 쓰면 index 찾을 필요 없이 알아서 찾아줌
         else :
             print(f"{drink}는 지금 없네요")
     else:
@@ -30,7 +30,7 @@ else:
             print(f"남은 음료수 : {vending_machine}")
             drink = input("삭제할 음료수? ")
             if drink in vending_machine: # 음료가 있다면
-                vending_machine.pop(vending_machine.index(drink))
+                vending_machine.remove(drink)
             else :
                 print(f"{drink}는 지금 없네요")
     print(f"남은 음료수 : {vending_machine}")

@@ -1,0 +1,12 @@
+def get_times(n) :
+    global count
+    number = 0
+    while number <  30:
+        count += 1
+        number = n * count
+        print(number, end=" ")
+
+count = 0
+n = 3
+get_times(n)
+print(f'\n{n}의 배수의 개수: {count}')

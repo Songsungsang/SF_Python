@@ -339,12 +339,13 @@ if word in dic :
 else :
     print("정의된 단어가 없습니다.")
 
-"""
 
 d = [[10, 20], 
      [30, 40], 
      [50, 60]
      ]
+
+
 
 print(d)
 print(d[0][0])
@@ -353,17 +354,91 @@ d.append([70, 80])
 print(d)
 d[0][0] = 90
 print(d)
-
+"""
+"""
 #d[1].pop(1) # [30, 40] 중에서 40만 사라져 버림
 #del(d[1][1]) # 이것도 40만
 #d[1].pop()
 print(d)
 print(len(d)) # 2차원 안에 행이 4개. 30,40 에서 40 빠져도 1개 취급
 
-for i in range(0, len(d)):
-    for j in range(0, len(d[i])) :
-        print(d[i][j], end=" ")
-    print()
 
-for x, y in d : # 각각 x 와 y 축에 있는걸 찾아서 print 가능해짐
-    print(x, y) # 중간에 값 하나가 열이 빠지면 에러 발생
+
+d = [[3, 1], [3, 2], [3, 3],
+     [3, 4], [3, 5], [3, 6],
+     [3, 7], [3, 8], [3, 9]
+     ]
+
+#for x, y in d : #열이 두개이고 동일해서 사용 가능
+#    print(f"{x} * {y} = {x * y}")
+
+for i in d :
+    print(f"{i[0]} * {i[1]} = {i[0] * i[1]}") #전제조건은 무조건 2열이 있다가 필요
+
+
+
+def f(x) : # def 함수이름(변수) : 로 함수 정의 가능
+    result =  x**2 + 2*x + 1
+    return result
+
+print(f(3))
+
+
+
+def sayHi() :
+    print("Hi")
+    print("Hi")
+    print("Hi") #return 값이 없어도 함수 사용 가능
+
+sayHi()
+
+
+x = 10
+
+
+def func2():
+    print("func2", x) #x가 전체적으로 10으로 정의되어 있어서 기본값 10인 느낌
+
+def func():
+    x = 20
+    y = 11
+    print("func1", x, y)
+    func2()
+
+def func3(x):
+    print("func3", x) #여기의 x는 func3가 받아들인 3을 사용
+
+func()
+print("main", x)
+
+func3(3)
+
+
+
+def times(l) :
+    l2 = [i*2 for i in l]
+    return set(l2)
+
+v2 = times([1,2,3,4,5])
+print(v2)
+
+def  sum_mul(a , b) :
+    sum = a + b
+    mul = a * b
+    return sum, mul
+
+s, m = sum_mul(2, 3)
+print(s, m)
+
+"""
+
+def oneUp() :
+    #global x
+    #x = x + 1 # 이걸 global x 없이 하면 무조건 오류남. 할당과 동작이 동시에 있어서 뭐가 먼저인지 문제 발생
+    y = x + 1
+    return y
+
+x = 0
+print(oneUp())
+print(oneUp())
+print(oneUp())

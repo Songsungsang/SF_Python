@@ -1,0 +1,8 @@
+def price(price, amount) :
+    total = price * amount # 주문가격 = 가격 * 수량
+    if total < 20000 :
+        total += 2500 # 배송비 추가
+    return total
+
+print("상품1 가격 :", price(2000, 15))
+print("상품2 가격 :", price(3000, 5))

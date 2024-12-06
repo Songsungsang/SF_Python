@@ -430,7 +430,7 @@ def  sum_mul(a , b) :
 s, m = sum_mul(2, 3)
 print(s, m)
 
-"""
+
 
 def oneUp() :
     #global x
@@ -442,3 +442,122 @@ x = 0
 print(oneUp())
 print(oneUp())
 print(oneUp())
+
+
+
+def pr_str(txt, count = 1, count2 = 1) : #default 값이 있는 변수를 앞에 두어야 한다. 아니면 어느게 생략되는지 헷갈리므로
+    for i in range(count):
+        print(txt)
+        print(count2)
+
+pr_str("Hello", 3, 2)
+pr_str("Hello", 3)
+print()
+pr_str("Hello")
+print()
+
+
+def calc_avg(*numbers) : # numbers를 튜플로 받음
+    print(type(numbers))
+    return sum(numbers)/len(numbers)
+
+print(calc_avg(1,2))
+print(calc_avg(1,2,3,4,5))
+
+def a() :
+    return 1, 2
+
+print(a())
+
+
+def intro(**kw) :
+    print(type(kw))
+    for k, v in kw.items() :
+        print(f"{k}: {v}")
+    for i in kw :
+        print(f"{i}")
+
+intro(name="Alice", age=25, city="NY")
+
+
+list = [2,4,1,4,6]
+list.sort()
+print(list)
+list2 = [2,4,1,4,6]
+print("sorted list2", sorted(list2))
+print("list2", list2)
+
+print(eval("1+2*2"))
+
+print(int(4.6+0.5)) # int만 하면 4만 나오니까 0.5 더하고 int로 변환하면 반올림 가능
+print(int(4.4+0.5))
+print(round(4.5)) # 이걸 쓰면 0.5가 반올림 되지 못했다. 짝수로 바뀐다...?
+print(round(4.4))
+print(round(4.567)) #이건 5로 올라감
+print(round(127,-1))
+print(round(127,-2))
+
+
+def hello():
+    print("hello")
+    hello() #내가 나를 부르고 또 나를 부르고 무한반복 재귀함수
+
+hello()
+
+
+x = 0
+def hello():
+    global x
+    x += 1
+    if x < 3 :
+        print("hello")
+        hello() #내가 나를 부르고 또 나를 부르고 무한반복 재귀함수
+    else :
+        print("hello")
+
+hello()
+
+
+add = lambda x, y : x + y  #익명 함수, 람다 함수
+print(type(add))
+print(add(1,2))
+
+def add2(x,y) :
+    return x + y
+
+add3 = add2
+print(add2(1,2))
+print(add3(1,2))
+
+
+def call_3(func): # function을 input으로 받는 함수
+    for i in range(3):
+        func()
+
+call_3(lambda:print("hi"))
+call_3(lambda:print("hello"))
+
+def download(startedCallback, endCallback): # lambda 두개 받아서 각각 돌리기
+    startedCallback()
+    # download
+    endCallback()
+
+download(lambda:print("다운로드 시작"), lambda:print("완료되었습니다")) # function 두개를 보내기
+
+
+list(map(int, "1","2","3")) #map은 첫번쨰는 function, 두번째는 값들
+"""
+result = map(lambda x: 3 * x, [1,2,3,4]) # 1회용으로 사용 = lambda
+print(list(result))
+
+li = [-5, 1, 2, -11, 76]
+
+#filter(function or None, iterable)
+value = list(filter(lambda x: x < 0, li)) # 필터를 사용하여 True 값들 결과들로 나온걸 밖으로 내놓음
+print(value) # -5, -11
+
+value = list(filter(lambda x: x > 10, li)) # 필터를 사용하여 - 값들 결과들로 나온걸 밖으로 내놓음
+print(value) # 76
+
+value = list(filter(lambda x: x > 3, (map(lambda x: x * 2, li)))) # list를 먼저 2배로 하고 거기서 3 이상을 필터링
+print(value)                                                      # map으로 function의 결과를 임시 리스트에 처리

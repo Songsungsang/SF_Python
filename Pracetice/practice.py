@@ -546,7 +546,7 @@ download(lambda:print("다운로드 시작"), lambda:print("완료되었습니�
 
 
 list(map(int, "1","2","3")) #map은 첫번쨰는 function, 두번째는 값들
-"""
+
 result = map(lambda x: 3 * x, [1,2,3,4]) # 1회용으로 사용 = lambda
 print(list(result))
 
@@ -561,3 +561,190 @@ print(value) # 76
 
 value = list(filter(lambda x: x > 3, (map(lambda x: x * 2, li)))) # list를 먼저 2배로 하고 거기서 3 이상을 필터링
 print(value)                                                      # map으로 function의 결과를 임시 리스트에 처리
+
+
+a = dict() # dict, set는 사실 class다
+b = set()
+
+class new_class : #붕어빵 틀
+    pass
+
+c = new_class() #붕어빵
+bb2 = new_class()
+bb3 = new_class()
+
+class Movie :
+    title = "곡성"
+
+movie1 = Movie()
+movie2 = Movie()
+
+print(movie1.title)
+print(movie2.title)
+print()
+
+movie1.title = "태풍을 부르는 영광의 불고기 로드"
+print(movie1.title)
+print(movie2.title)
+
+movie1.score = "1"
+print(movie1.score)
+#print(movie2.score)
+
+
+class Movie :
+    name = ''
+    def print_msg(msg) :
+        print(msg)
+    def modify(self, movie) :
+        self.name = movie
+    def print_name(self) :
+        print(self.name)
+
+movie1 = Movie()
+movie2 = Movie()
+
+Movie.print_msg("Print하기")
+movie1.modify("Print했음")
+movie1.print_name()
+movie2.modify("극한직업")
+movie2.print_name()
+print("Movie2 name :", movie2.name)
+
+
+class Movie:
+    count = 0
+
+    def __init__(self, title, audience):
+        self.title = title
+        self.audience = audience
+
+movie1 = Movie("파묘", 100)
+movie2 = Movie("극한직업", 200)
+print(movie1.title, movie1.audience)
+print(movie2.title, movie2.audience)
+#movie3 = Movie() # title과 audience가 필요
+
+
+class Movie:
+    count = 0
+    def __init__(self, title, audience):
+        self.title = title
+        self.audience = audience
+        Movie.count += 1
+
+movie1 = Movie("파묘", 100)
+movie2 = Movie("극한직업", 200)
+
+print(movie1.count) # 모든 값들의 count가 2로 바뀜. 다른 값에도 영향을 미친다
+print(movie2.count)
+print(Movie.count)
+print()
+Movie.count += 1
+print(movie1.count)
+print(movie2.count)
+print(Movie.count)
+print()
+movie1.count += 1
+print(movie1.count)
+print(movie2.count)
+print(Movie.count)
+print()
+Movie.count += 1 #movie1에서 따로 증가를 했어도 무시하고 4,4,4가 나온다. 틀 자체가 바뀌기 때문
+print(movie1.count)
+print(movie2.count)
+print(Movie.count)
+
+
+class Movie:
+    count = 0
+    def __init__(self, title, audience) :
+        self.__title = title
+        self._audience = audience
+        Movie.count += 1
+
+    def get_title(self):
+        return self.__title
+    def set_title(self, title) :
+        self.__title = title
+    def get_audience(self):
+        return self._audience
+
+movie1 = Movie("파묘", 100)
+#print(movie1.__title) # 밖에서 접근은 안됨
+print(movie1.get_title()) # class안에서 접근하는건 가능
+#movie1.__title = "오겜" # 밖에서 set title 없이 접근이... 됨?
+#print(movie1.get_title()) # 나오는 이름 파묘로 바뀌지 않은 모습
+#print(movie1.__title) # 안의 private를 참조하는 것이 아닌 새로운 변수가 만들어 진것과 같다
+
+print(movie1._audience) # C언어에서는 보호되지만 파이썬에서는 실질적 제한 없음
+print(movie1.get_audience())
+
+
+class Health :
+    def __init__(self, name) -> None:
+        self.__name = name
+        self.__hlp = 100
+
+    def getName(self) :
+        return self.__name
+    
+    def setHp(self, hp) :
+        hp = max(hp, 0) # 0보다 작으면 둘중 최대값 hp를 채택
+        hp = min(hp, 100) # 100보다 크면 둘중 최소값 hp를 채택
+        self.__hp = hp
+
+    def getHp(self) :
+        return "hp " + str(self.__hp)
+    
+    def exercise(self, hours):
+        self.setHp(self.__hp + hours)
+        print(f"운동을 {hours}시간 하다")
+    
+    def drink(self, cups) :
+        self.setHp(self.__hp - cups)
+        print(f"술을 {cups}잔 마시다")
+
+p1 = Health("나몸짱")
+p1.setHp(100)
+p1.exercise(5)
+p1.drink(2)
+print(f"{p1.getName()} - {p1.getHp()}")
+
+p2 = Health("나약해")
+p2.setHp(10)
+p2.exercise(1)
+p2.drink(12)
+print(f"{p2.getName()} - {p2.getHp()}")
+"""
+
+class Employee :
+    serial_num = 1000
+
+    def __init__(self, name) -> None:
+        Employee.serial_num += 1
+        self.id = Employee.serial_num
+        self.name = name
+    
+    def __str__(self) -> str: # print(e1)같은 형식을 하였을때 출력값을 return 값으로 보여줌
+        return "사번 : {}, 이름 : {}".format(self.id, self.name)
+
+e1 = Employee("최사원")
+print(e1)
+
+e2 = Employee("안사원")
+print(e2)
+
+e3 = Employee("한사원")
+print(e3)
+
+employee = [
+    Employee("구름"),
+    Employee("별"),
+    Employee("행성"),
+    Employee("달")
+]
+print(employee[0])
+print(employee[1])
+print(employee[2])
+print(employee[3])

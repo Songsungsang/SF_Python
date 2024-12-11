@@ -716,7 +716,7 @@ p2.setHp(10)
 p2.exercise(1)
 p2.drink(12)
 print(f"{p2.getName()} - {p2.getHp()}")
-"""
+
 
 class Employee :
     serial_num = 1000
@@ -743,8 +743,87 @@ employee = [
     Employee("별"),
     Employee("행성"),
     Employee("달")
+
+
 ]
 print(employee[0])
 print(employee[1])
 print(employee[2])
 print(employee[3])
+
+
+class Country:
+    def __init__(self):
+        self.name = "나라이름"
+        self.population="인구"
+        self.capital="수도"
+
+    def show(self): # show를 Korea에게 상속해줌
+        print("국가 클래스의 메소드")
+
+class Korea(Country) :
+    def __init__(self, name):
+        self.name = name
+
+    def show(self) :
+        print("국가 이름은", self.name)
+
+country = Korea("대한민국")
+country.show()
+print(country.name)
+country.show()
+
+
+import calc_module # 다른 파일 import 연습. 같은 폴더내에 있어야 한다.
+
+print(calc_module.add(1,2)) # 다른 파일의 짜여진 함수 사용
+print(calc_module.sub(1,2))
+print(calc_module.mul(1,2))
+print(calc_module.div(1,2))
+
+from calc_module import add # add만 import
+print(add(1,2))
+
+import calc_module as cm
+print(cm.add(1,2))
+
+import math
+
+print(math.floor(3.141592))
+print(math.ceil(3.141592))
+print(math.sqrt(9))
+
+from math import floor, ceil
+print(floor(3.141592))
+print(ceil(3.141592))
+
+import random
+
+print(random.randint(1,5)) # 1부터 5까지의 정수
+print(random.uniform(1,5)) # 1부터 5까지의 소수점 있는 숫자
+print(random.random()) # 0에서 1사이 숫자
+print(random.randrange(1,5)) # 5는 포함이 안됨
+print(random.randrange(1,5,2)) #2의 간격으로 출력
+"""
+
+import datetime # 시간 관련
+
+now = datetime.datetime.today()
+print(now) # 지금의 년월날시분초
+print(now.year, now.month) #년, 월 따로 나눠서
+
+print(f"{now.hour}시 {now.minute}분 {now.second}초") # 시분초도 이렇게 나눠서 보여주기 가능
+
+today = datetime.date.today()
+print(today.year)
+
+print("지금까지 몇 일?")
+first_day = datetime.date(2024, 11, 25)
+print(first_day)
+
+today = datetime.date.today()
+print(today)
+
+passed_time = today - first_day
+print(passed_time)
+print(f"개강 이후 {passed_time.days}일 지났습니다.")

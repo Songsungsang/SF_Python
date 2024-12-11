@@ -804,7 +804,7 @@ print(random.uniform(1,5)) # 1부터 5까지의 소수점 있는 숫자
 print(random.random()) # 0에서 1사이 숫자
 print(random.randrange(1,5)) # 5는 포함이 안됨
 print(random.randrange(1,5,2)) #2의 간격으로 출력
-"""
+
 
 import datetime # 시간 관련
 
@@ -827,3 +827,116 @@ print(today)
 passed_time = today - first_day
 print(passed_time)
 print(f"개강 이후 {passed_time.days}일 지났습니다.")
+
+
+import calendar
+
+#calendar.prcal(2024) # 2024년도 달력 출력
+#calendar.prmonth(2024, 12)
+#print(calendar.weekday(2024, 12 ,9)) # 2024년 12월 9일이 무슨 요일인가
+
+import datetime
+
+days =['월', '화', '수', '목', '금', '토', '일']
+weekday = datetime.date.today().weekday()
+print("오늘은 " + days[weekday] + "요일")
+
+def getWeekday(yyyy, mm , dd):
+    days =['월', '화', '수', '목', '금', '토', '일']
+    weekday = datetime.date(yyyy, mm, dd).weekday()
+    print(f"{yyyy}년 {mm}월 {dd}일 {days[weekday]}요일")
+
+getWeekday(2024, 12, 11)
+
+
+import time
+
+a = time.time()
+time.sleep(2)
+b = time.time() # 2초 쉬었다가 출력
+# print(b-a)
+
+#print(time.localtime())
+time_str = time.localtime()
+print(time_str.tm_year)
+
+print(time.ctime())
+print(time.ctime(a))
+print(time.ctime(b))
+
+year = round(time.time()/(365*24*60*60)) # 초가 기준이니 년을 초로 변환해서 나눔
+print(year) # 70년도로 부터 약 55년이 흘렀다
+days = round(time.time()/(24*60*60)) # 초가 기준이니 일을 초로 변환해서 나눔
+print(days) # 70년도로 부터 약 20068일이 흘렀다
+
+
+import time
+
+def check_time(func): # 함수를 인풋으로 받음
+    start = time.time() #시작 시간
+
+    func()
+
+    end = time.time()
+    print(f"수행시간 : {end-start}초")
+
+def ten_seconds():
+    for i in range(10):
+        print(i)
+        time.sleep(1)
+
+def hundred_seconds():
+    for i in range(100):
+        print(i)
+        time.sleep(1)
+
+#check_time(ten_seconds)
+check_time(hundred_seconds)
+
+
+import os # 이런게 있구나 넘어가기
+
+os.chdir("C:\\Users\\USER\\git\\SF_Codes\\SF_Python") # 유니코드의 경로지정에는 \ 하나가 아니라 두개 필요
+#dir = os.popen('git status')
+dir = os.popen('where cat')
+print(dir.read())
+
+print(os.listdir())
+
+
+from modules.mylib import food # 이 파일에서 modules폴더로 들어가서 mylib 폴더로 들어가서 food.py를 조회함
+                                #import 하려는 파일의 위치 매우 종요
+
+print(food.name)
+food.cook()
+food.eat()
+
+from modules.mylib.food import name, cook, eat, mukbang
+
+print(name)
+cook()
+eat()
+
+import bbb.cm2
+print(bbb.cm2.add(1 ,2))
+
+import bbb.cm2 as bc
+print(bc.add(1 ,2))
+
+
+f = open("text.txt", "w")
+f.write("Hello World\n")
+f.close()
+"""
+
+f = open("text.txt" , "w") # 내가 파일을 실행한 위치에 text.txt 생성
+print(f.write("Hello World\n"))
+f.close()
+
+f2 = open("text.txt") # 기본은 read
+print(f2.read(5))
+f2.close()
+
+f3 = open("text.txt", "a") # a 옵션은 뒤에 추가하는거
+f3.write("Hello world 22\n")
+f3.close()

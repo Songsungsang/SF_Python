@@ -934,9 +934,14 @@ print(f.write("Hello World\n"))
 f.close()
 
 f2 = open("text.txt") # 기본은 read
-print(f2.read(5))
+#print(f2.read(5))
 f2.close()
 
 f3 = open("text.txt", "a") # a 옵션은 뒤에 추가하는거
 f3.write("Hello world 22\n")
 f3.close()
+
+f4 = open("text.txt")
+print(f4.readline(),end="") # 한줄, 1 line씩 출력
+print(f4.readline(),end="")
+f4.close()

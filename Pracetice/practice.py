@@ -927,7 +927,7 @@ print(bc.add(1 ,2))
 f = open("text.txt", "w")
 f.write("Hello World\n")
 f.close()
-"""
+
 
 f = open("text.txt" , "w") # 내가 파일을 실행한 위치에 text.txt 생성
 print(f.write("Hello World\n"))
@@ -942,6 +942,46 @@ f3.write("Hello world 22\n")
 f3.close()
 
 f4 = open("text.txt")
-print(f4.readline(),end="") # 한줄, 1 line씩 출력
-print(f4.readline(),end="")
+print(f4.readlines()) # 모든 줄들을 읽어들임
+#print(f4.readline(),end="") # 한줄, 1 line씩 읽어들임
+#print(f4.readline(),end="")
 f4.close()
+
+f4 = open("text.txt", "w")
+f4.write("123456789")
+f4.close()
+
+f5 = open("text.txt", "r+") # + 파일을 수정하게 위해서 열기
+str5 = f5.read()
+#f5.seek(4) # seek 0 을 하면 처음으로 다시 올라감
+f5.seek(str5.find('5')) # 파일의 텍스트에서 5의 위치를 찾음
+print(f5.write("8")) # seek 4로 0에서부터 4번 위치로 간후에 write 8로 한글자만 수정함
+f5.seek(0)
+print(f5.read())
+f5.close()
+
+f4 = open("text.txt", "w")
+f4.write("123456789")
+f4.close()
+
+with open("text.txt", "r+") as f7:
+    str7 = f7.read()
+    #f5.seek(4) # seek 0 을 하면 처음으로 다시 올라감
+    f7.seek(str7.find('5')) # 파일의 텍스트에서 5의 위치를 찾음
+    print(f7.write("8")) # seek 4로 0에서부터 4번 위치로 간후에 write 8로 한글자만 수정함
+    f7.seek(0)
+    print(f7.read())
+"""
+import sys, os
+if os.path.exists("./output/input.txt") == False: #output 폴더안에 input.txt가 없다면
+    with open("./output/input.txt", "w") as f:
+        f.write("")
+        f.close()
+
+with open("./output/input.txt", "a") as f:
+    while True:
+        text = input("저장할 내용을 입력해 주세요.(종료-z) : ")
+        if text.lower() == "z" :
+            break
+            # sys.exit(0)
+        f.write(text + "\n")

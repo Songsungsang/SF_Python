@@ -14,7 +14,7 @@ import random, time, os, sys
 #     print(word)
 
 if os.path.exists("./Answer/12_12/word.txt"): #특정 파일이 현재 경로에 있다면
-    with open("word.txt", "r") as f:
+    with open("./Answer/12_12/word.txt", "r") as f:
         word = f.read().split() #한칸 띄어쓰기 기준으로 쪼개기
         # data = f.readlines()
         print(word) # word는 지역변수가 아니라 글로벌이어서 밑에서 사용 가능

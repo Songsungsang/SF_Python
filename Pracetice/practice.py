@@ -971,7 +971,7 @@ with open("text.txt", "r+") as f7:
     print(f7.write("8")) # seek 4로 0에서부터 4번 위치로 간후에 write 8로 한글자만 수정함
     f7.seek(0)
     print(f7.read())
-"""
+
 import sys, os
 if os.path.exists("./output/input.txt") == False: #output 폴더안에 input.txt가 없다면
     with open("./output/input.txt", "w") as f:
@@ -985,3 +985,89 @@ with open("./output/input.txt", "a") as f:
             break
             # sys.exit(0)
         f.write(text + "\n")
+
+
+with open("./output/data.bin", "wb") as f:
+    txt = "안녕"
+    f.write(txt.encode())
+
+with open("./output/data.bin", "rb") as f:
+    data = f.read()
+    print(data)
+    print(data.decode())
+
+with open("./output/question.png", "rb") as f1:
+    img = f1.read()
+
+with open("./output/question_copy.png", "wb") as f2:
+    f2.write(img)
+
+
+try:
+    num = int(input("정수입력 "))
+except ValueError as msg: #값 오류
+    print(msg)
+
+try:
+    num = int(input("정수입력 "))
+except: # 오류라면
+    print("뭔진 모르겠지만 에러")
+
+try:
+    num = int(input("정수입력 "))
+except Exception as msg: #모든 종류의 에러 메세지 출력가능
+    print(msg)
+else:
+    print("예외 없음")
+
+try:
+    num = int(input("정수입력 "))
+except Exception as msg: #모든 에러의 부모이고 except가 Value가 위에 있으니 ValueError보다 우선
+                        #보통 Exception은 가장 포괄적이기 때문에 아래에 두는게 좋다
+    print(msg)
+except ValueError as msg:
+    print("ValueError", msg)
+else:
+    print("예외 없음")
+
+try:
+    num = int(input("정수입력 "))
+except Exception as msg:
+    print(msg)
+except ValueError as msg:
+    print("ValueError", msg)
+finally: #try가 성공하든 except로 가든 break로 루프를 빠져나가든 무조건 실행
+    print("무조건 무조건이야")
+
+
+a = 1
+try :
+    a += 1
+    if a > 1:
+        raise Exception
+    a += 2 # 현재 조건에서 Exception으로 무조건 빠지므로 실행안됨
+    print("a", a)
+except :
+    print("error", a) # 강제로 except로 빠짐
+"""
+
+class Animal :
+    def breath(self) :
+        print("숨을 쉰다")
+    def cry(self) :
+        raise NotImplementedError # 특정 함수를 무조건 override 시켜야 할때
+
+class Dog(Animal) :
+    pass
+
+class Cat(Animal) :
+    def cry(self) :
+        print("야옹")
+
+c = Cat()
+c.breath()
+c.cry()
+
+d = Dog()
+d.breath()
+d.cry() # Dog에서 cry를 override 안하면 에러 발생시키겠다

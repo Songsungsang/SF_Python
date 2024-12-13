@@ -16,6 +16,7 @@ with open("./Answer/12_12/member.txt", "r") as f:
     
     print(word)
 
+"""
 if word == "로그인 성공!":
     phone_number = input("전화번호를 입력하세요. ")
     dictPhone = dict()
@@ -34,3 +35,23 @@ if word == "로그인 성공!":
         else: # 있다면
             f.seek(strf.find(name)) #이름의 위치 찾아서
             f.write(f"{name} {phone_number}\n")
+"""
+#정답 코드
+if word == "로그인 성공!":
+    phone = input("전화번호를 입력하세요. ")
+    user_tel = name + " " + phone + "\n"
+    with open("./Answer/12_12/member_tel.txt", "r+") as f:
+         m_tel_list = f.readlines()
+    print(m_tel_list)
+
+with open("member_tel.txt", "w") as f:
+    write = False
+    for i in m_tel_list:
+        if i.split()[0] == name:
+            f.write(user_tel)
+            write = True
+        else :
+            f.write(i)
+    if not write:
+        print("not write", user_tel)
+        f.write(user_tel)

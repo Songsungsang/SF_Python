@@ -1049,7 +1049,7 @@ try :
     print("a", a)
 except :
     print("error", a) # 강제로 except로 빠짐
-"""
+
 
 class Animal :
     def breath(self) :
@@ -1071,3 +1071,9 @@ c.cry()
 d = Dog()
 d.breath()
 d.cry() # Dog에서 cry를 override 안하면 에러 발생시키겠다
+"""
+
+def add(a=1,b=2):
+    return a,b,a+b
+
+print(add(2,3))

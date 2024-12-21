@@ -1071,9 +1071,62 @@ c.cry()
 d = Dog()
 d.breath()
 d.cry() # Dog에서 cry를 override 안하면 에러 발생시키겠다
-"""
+
 
 def add(a=1,b=2):
     return a,b,a+b
 
 print(add(2,3))
+
+
+#12.20
+import requests
+
+response = requests.get("https://shopping.naver.com/ns/home") # 이 페이지로 보내는 리퀘스트 결과 받기
+html = response.text # 리퀘스트를 텍스트로 받음
+# print(html)
+from bs4 import BeautifulSoup
+
+soup = BeautifulSoup(html, 'html.parser')
+"""
+from bs4 import BeautifulSoup
+
+html_str = '''
+<html>
+    <body>
+        <div id="content">
+            <ul class = 'industry'>
+                <li>인공지능</li>
+                <li>빅데이터</li>
+                <li>스마트팩토리</li>
+            </ul>
+            <ul class = 'comlang'>
+                <li>Python</li>
+                <li>C++</li>
+                <li>Javascript</li>
+            </ul>
+        </div>
+    </body>
+</html>
+'''
+soup = BeautifulSoup(html_str, 'html.parser') #html 파싱
+
+first_ul = soup.find('ul') # html 가져온것에서 ul이 처음으로 나오는 구간
+# print(first_ul)
+# print(first_ul.text) # 형식을 다떼고 텍스트만 출력
+
+all_list = first_ul.findAll('li') # ul로 찾은거 안에 있는 li 요소 모두 찾기
+print(all_list) # li 요소들의 리스트 리턴                                                                                                                                                                                                                                                                                                                                                                                                                   
+# print(all_list[0])
+# print(all_list[0].text)
+
+find_ul = soup.find('ul', class_='comlang') # 클래스 선택자로
+# print(find_ul)
+# print(find_ul.text)
+
+f_ul = soup.select_one('ul.industry')
+print(f_ul)
+print(f_ul.text)
+
+all_li = soup.findAll('ul.industry > li')
+print(all_list)
